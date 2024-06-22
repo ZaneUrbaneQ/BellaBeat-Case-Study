@@ -20,6 +20,8 @@ Bellabeat aims to analyze smart device usage data to understand how consumers us
 Key stakeholders include Urška Sršen and Sando Mur, co-founders of Bellabeat, as well as the marketing analytics team responsible for analyzing and interpreting consumer data.
 
 ## About the Data (Prepare)
+[Back to top](#author-zane-urbane)
+
 Data Source: FitBit Fitness Tracker Data from Mobius: https://www.kaggle.com/arashnic/fitbit
 
 This Kaggle dataset comprises personal fitness tracker data from thirty Fitbit users. These participants consented to provide their personal tracker data, which includes minute-level output for physical activity, heart rate, and sleep monitoring. The dataset features information on daily activity, steps, and heart rate, allowing for an exploration of users' habits. It contains 18 CSV files organized in long format.
@@ -32,6 +34,8 @@ Current: Low — The data is approximately 8 years old, having been collected in
 Cited: Low — Data obtained from an unidentified third party (Amazon Mechanical Murk).
 
 ## Data preparation (Process)
+[Back to top](#author-zane-urbane)
+
 For data exploration - data uplods, manipulation, preparation, and basic analysis, R and RStudio Cloud were used. All the code can be found in *bellabeat_case_study.Rmd* in this repository.
 Two daily ata sets were explored: dailyActivity_merged.csv and sleepDay_merged.csv.
 And three hourly data sets were look at: hourlyIntensities_merged.csv, hourlySteps_merged.csv, hourlyCalories_merged.csv.
@@ -165,11 +169,15 @@ ggplot(avg_by_weekday_long, aes(x = Weekday, y = Minutes, fill = ActivityType)) 
 Data was prepared for eseier visualization making in Tableau and exported as csv.
 
 ## Data Visualization (Share)
+[Back to top](#author-zane-urbane)
+
 ### [BellaBeat Data Analysis Dashboard in Tableau](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
 ![Bellabeat](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/9eaac7ce-8d20-49c3-912f-f51d3c47b997)
 
 
 ## Conclusions and Recommendations (Act)
+[Back to top](#author-zane-urbane)
+
 Analysis of smart device usage data reveals the following insights:
 -  74.3% of awake time users spend in sedentary positions.
 -  Very active minutes average only 21-31 minutes daily.
