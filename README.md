@@ -35,12 +35,44 @@ Current: Low — The data is approximately 8 years old, having been collected in
 Cited: Low — Data obtained from an unidentified third party (Amazon Mechanical Murk).
 
 ## Data preparation (Process)
-For data manipulation, preparation, and basic analysis, R and RStudio Cloud were used. All the code can be found in *bellabeat_case_study.Rmd* in this repository.
+For data exploration - data uplods, manipulation, preparation, and basic analysis, R and RStudio Cloud were used. All the code can be found in *bellabeat_case_study.Rmd* in this repository.
+Two daily ata sets were explored: dailyActivity_merged.csv and sleepDay_merged.csv.
+And three hourly data sets were look at: hourlyIntensities_merged.csv, hourlySteps_merged.csv, hourlyCalories_merged.csv.
+After preperation files were combined in daily data and hourly data.
 
-
-
+All uploded data was checked for NA or duplicate values. And one found and removed.
+```
+sum(is.na(daily_sleep))
+sum(duplicated(daily_sleep))
+daily_sleep <- daily_sleep[!duplicated(daily_sleep), ]
+```
+Daily activities and daily sleep records where explored. There are more participants in daily activity - 33 than in daily sleep records - 24.
+``` r
+n_distinct(daily_activity$Id)
+n_distinct(daily_sleep$Id)
+```
+Column ActivityDate is recognized as a character (chr) type, so it needs to be changed to a date. And the Id column should be nominal type, as it is used as an index, not a numeric value. These changes had to be made for all the datasets.
+``` r
+daily_activity$ActivityDate <- as.Date(daily_activity$ActivityDate, format = "%m/%d/%Y")
+daily_activity$Id <- as.character(daily_activity$Id)
+```
+For all datasets a colomn with weekdays was aded to see if it significant dimension.
+``` r
+daily_activity$Weekday <- weekdays(daily_activity$ActivityDate)
+```
+Merge daily activities data with sleep data for analysis together. In daily activity data there are 940 rows, but in sleep data only 410 rows. I used left join to keep all data and explore it later.
+``` r
+comb_daily_data <- left_join(daily_activity, daily_sleep, by= c("Id","ActivityDate" = "SleepDay"))
+#Rename ActivityDate column as Date
+colnames(comb_daily_data)[colnames(comb_daily_data) == "ActivityDate"] <- "Date"
+#In thata set is 2650 NA values. NA is only in merged data in sleep column.
+#Replace it with zero for calculations.
+comb_daily_data[is.na(comb_daily_data)] <- 0
+```
 
 ## Data Exploration (Analyze)
+
+
 
 ## Data Visualization (Share)
 ### [BellaBeat Data Analysis Dashboard in Tableau](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
