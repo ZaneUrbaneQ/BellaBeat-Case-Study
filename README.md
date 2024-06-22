@@ -71,6 +71,47 @@ comb_daily_data[is.na(comb_daily_data)] <- 0
 ```
 
 ## Data Exploration (Analyze)
+For begining I tried to understand how Fitbit users used the tracker. Did them used it all day long or only when excersising.There is 1440 min in a day so I will check thas data in time columns sum up or not.
+``` r
+comb_daily_data <- mutate(comb_daily_data, TotalMinutes = VeryActiveMinutes + FairlyActiveMinutes + LightlyActiveMinutes + SedentaryMinutes + TotalTimeInBed)
+count_1440_minutes <- sum(comb_daily_data$TotalMinutes == 1440)
+print(count_1440_minutes)
+```
+604 of 940 records include all day.
+``` r
+ggplot(comb_daily_data, aes(x = Date, y = Id, fill = TotalMinutes)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "blue") +
+  labs(title = "Heatmap of Total Minutes by ID and Date",
+       x = "Date", y = "ID", fill = "Total Minutes") +
+  theme_minimal()
+```
+![ggplot_1](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/e3b77438-cb74-46ed-bf61-e48fa83589a2)
+There are users that have not used Fitbit tracker for all the period. It looks like that some minuts don't go to right date. That could be because the sleep data is daily and could refer to 2 dates.From heat map looks like last date could be incompleat.
+Lets look at average minutes per day.
+``` r
+Id_activity <- comb_daily_data %>%
+  group_by(Id) %>%
+  summarise(
+    total_dates = n_distinct(Date),
+    total_minutes = sum(TotalMinutes)
+  ) %>%
+  mutate(average_total_minutes = total_minutes / total_dates)%>%
+  arrange(desc(average_total_minutes))
+```
+Average minutes for day is from 1322 to 1439 so sleeping time accuracy could be the cases.
+And I want to see how looks those records, that don't have daily sleep records.
+``` r
+comb_data_no_sleep <- comb_daily_data[comb_daily_data$TotalSleepRecords == 0,]
+count_1440_minutes_no_sleep <- sum(comb_data_no_sleep$TotalMinutes == 1440)
+print(count_1440_minutes_no_sleep)
+```
+478 from 530 records are 1440 min whitout sleep time.Looks like sleeping time is added to SedentaryMinutes.Maybe users needed to add it manually.
+``` r
+ggplot(data=comb_data_no_sleep, aes(x=TotalMinutes, y=SedentaryMinutes)) + geom_point()
+```
+![ggplot_2](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/c16fb60d-aeee-4d30-9906-0daeebdd8426)
+
 
 
 
