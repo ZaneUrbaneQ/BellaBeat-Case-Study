@@ -168,6 +168,7 @@ Data was prepared for eseier visualization making in Tableau and exported as csv
 
 
 ## Conclusions and Recommendations (Act)
+[Back to Top](#date)
 Analysis of smart device usage data reveals the following insights:
 -  74.3% of awake time users spend in sedentary positions.
 -  Very active minutes average only 21-31 minutes daily.
