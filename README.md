@@ -29,11 +29,13 @@
 
 ## Data Visualization
 
-## Data Visualization
-
-### [Bellabeat Data Analysis Dashboard](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
-[Bellabeat](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/a444dc0c-a99e-436d-a42e-77f0110d9b6a)
+### [BellaBeat Data Analysis Dashboard in Tableau](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
+![Bellabeat](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/9eaac7ce-8d20-49c3-912f-f51d3c47b997)
 
 
-## Data Preparation
+## Conclusions and Recommendations
 
+Smart device usage data analysis shows that:
+-  most of the day users are sedentary,
+-  onlu 
+**
