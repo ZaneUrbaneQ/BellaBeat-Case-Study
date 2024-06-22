@@ -35,17 +35,19 @@ Current: Low — The data is approximately 8 years old, having been collected in
 Cited: Low — Data obtained from an unidentified third party (Amazon Mechanical Murk).
 
 ## Data preparation (Process)
+For data manipulation, preparation, and basic analysis, R and RStudio Cloud were used. All the code can be found in *bellabeat_case_study.Rmd* in this repository.
+
+
+
 
 ## Data Exploration (Analyze)
 
 ## Data Visualization (Share)
-
 ### [BellaBeat Data Analysis Dashboard in Tableau](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
 ![Bellabeat](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/9eaac7ce-8d20-49c3-912f-f51d3c47b997)
 
 
 ## Conclusions and Recommendations (Act)
-
 Analysis of smart device usage data reveals the following insights:
 -  74.3% of awake time users spend in sedentary positions.
 -  Very active minutes average only 21-31 minutes daily.
@@ -59,5 +61,4 @@ Recommendations based on the data:
 - Include sleep reminders to approach the recommended 8 hours, synchronized with morning alarm times.
 - BellaBeat could introduce an educational program coupled with a point-based incentive system.
 - Enhance analysis accuracy by expanding participant data, duration, and detailed user information for precise segmentation.
-  
-**
+
