@@ -72,6 +72,8 @@ comb_daily_data[is.na(comb_daily_data)] <- 0
 ```
 
 ## Data Exploration (Analyze)
+[Back to top](#author-zane-urbane)
+
 For begining I tried to understand how Fitbit users used the tracker. Did them used it all day long or only when excersising.There is 1440 min in a day so I will check thas data in time columns sum up or not.
 ``` r
 comb_daily_data <- mutate(comb_daily_data, TotalMinutes = VeryActiveMinutes + FairlyActiveMinutes + LightlyActiveMinutes + SedentaryMinutes + TotalTimeInBed)
