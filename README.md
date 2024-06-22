@@ -111,9 +111,61 @@ print(count_1440_minutes_no_sleep)
 ggplot(data=comb_data_no_sleep, aes(x=TotalMinutes, y=SedentaryMinutes)) + geom_point()
 ```
 ![ggplot_2](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/c16fb60d-aeee-4d30-9906-0daeebdd8426)
+For daily activities analysis I will use only data that includes sleeping data. And add colums with active time and laying in bed time.
+``` r
+daily_analysis_data <- comb_daily_data %>%
+  filter(TotalSleepRecords > 0)
 
+daily_analysis_data <- mutate(daily_analysis_data, SomeActivity = VeryActiveMinutes + FairlyActiveMinutes + LightlyActiveMinutes)
 
+daily_analysis_data <- mutate(daily_analysis_data, LayingMinutes = TotalTimeInBed - TotalMinutesAsleep)
+```
+More active minutes more steps.
+``` r
+ggplot(data=daily_analysis_data, aes(x=TotalSteps, y=SomeActivity)) + geom_smooth(method = "loess") + 
+  labs(title = "Comparison of Steps VS Activity Time", x = "Total Steps", y = "Activity Time")
+```
+![ggplot_3](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/13f6f9c3-daa1-4973-851b-bd36af1fc0de)
 
+I will look at summary data about how participiants spend they time.
+``` r
+sums_act <- colSums(daily_analysis_data[, c("VeryActiveMinutes", "FairlyActiveMinutes", "LightlyActiveMinutes", "SedentaryMinutes", "TotalMinutesAsleep", "LayingMinutes")])
+
+total_sum_act <- sum(sums_act)
+
+percentages_sum_act <- (sums_act / total_sum_act) * 100
+
+avg_act <- colMeans(daily_analysis_data[, c("VeryActiveMinutes", "FairlyActiveMinutes", "LightlyActiveMinutes", "SedentaryMinutes", "TotalMinutesAsleep", "LayingMinutes")])
+
+sum_daily_activites <- data.frame(
+  Activity = names(sums_act),
+  TotalTime = as.numeric(sums_act),
+  PercentageOfTotal = percentages_sum_act,
+  AvgTime = as.numeric(avg_act)
+)
+```
+Most of the time is spent as sedentary minutes.
+``` r
+ggplot(data=sum_daily_activites, aes(x=Activity, y=AvgTime))+
+  geom_bar(stat="identity")+
+  labs(title="Average Time in day for each activity")+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+![ggplot_4](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/6ae2814e-5023-4ab9-a1a9-a9e5da88b5af)
+
+And Explore activities by weekdays.
+``` r
+ggplot(avg_by_weekday_long, aes(x = Weekday, y = Minutes, fill = ActivityType)) +
+  geom_bar(stat = "identity") +
+  labs(title = "Average Activity Minutes by Weekday",
+       x = "Weekday",
+       y = "Average Minutes",
+       fill = "Activity Type") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+![ggplot_5](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/5aae9e75-b08f-455e-aacc-42dc3e81ed8b)
+
+Data was prepared for eseier visualization making in Tableau and exported as csv.
 
 ## Data Visualization (Share)
 ### [BellaBeat Data Analysis Dashboard in Tableau](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
