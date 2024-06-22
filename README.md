@@ -27,6 +27,7 @@ Data Source: FitBit Fitness Tracker Data from Mobius: https://www.kaggle.com/ara
 This Kaggle dataset comprises personal fitness tracker data from thirty Fitbit users. These participants consented to provide their personal tracker data, which includes minute-level output for physical activity, heart rate, and sleep monitoring. The dataset features information on daily activity, steps, and heart rate, allowing for an exploration of users' habits. It contains 18 CSV files organized in long format.
 
 ROCCC analysis and dataset limitations:
+
 Reliable: Low - The dataset includes only 30 participants, which is a small sample size and does not accurately represent the broader population of female Fitbit users. This small sample size introduces significant bias and reduces the reliability of any conclusions drawn from the data.
 
 Original: Low — The data being collected from Amazon Mechanical Turk indicates that it is sourced from a third party. 
@@ -78,13 +79,13 @@ comb_daily_data[is.na(comb_daily_data)] <- 0
 ## Data Exploration (Analyze)
 [Back to top](#author-zane-urbane)
 
-For begining I tried to understand how Fitbit users used the tracker. Did them used it all day long or only when excersising.There is 1440 min in a day so I will check thas data in time columns sum up or not.
+To begin, I aimed to understand how Fitbit users utilized their trackers. Did they use them throughout the day or only during exercise sessions? There are 1440 minutes in a day, so I will verify whether the data in the time columns sums up correctly.
 ``` r
 comb_daily_data <- mutate(comb_daily_data, TotalMinutes = VeryActiveMinutes + FairlyActiveMinutes + LightlyActiveMinutes + SedentaryMinutes + TotalTimeInBed)
 count_1440_minutes <- sum(comb_daily_data$TotalMinutes == 1440)
 print(count_1440_minutes)
 ```
-604 of 940 records include all day.
+604 out of 940 records cover the entire day.
 ``` r
 ggplot(comb_daily_data, aes(x = Date, y = Id, fill = TotalMinutes)) +
   geom_tile() +
@@ -94,8 +95,8 @@ ggplot(comb_daily_data, aes(x = Date, y = Id, fill = TotalMinutes)) +
   theme_minimal()
 ```
 ![ggplot_1](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/e3b77438-cb74-46ed-bf61-e48fa83589a2)
-There are users that have not used Fitbit tracker for all the period. It looks like that some minuts don't go to right date. That could be because the sleep data is daily and could refer to 2 dates.From heat map looks like last date could be incompleat.
-Lets look at average minutes per day.
+Some users did not use the Fitbit tracker throughout the entire period. It appears that some minutes might not be correctly assigned to the right date, possibly due to sleep data being recorded daily and potentially spanning two dates. The heatmap suggests that the data for the last date might be incomplete.
+Next, let's examine the average minutes per day.
 ``` r
 Id_activity <- comb_daily_data %>%
   group_by(Id) %>%
@@ -106,8 +107,8 @@ Id_activity <- comb_daily_data %>%
   mutate(average_total_minutes = total_minutes / total_dates)%>%
   arrange(desc(average_total_minutes))
 ```
-Average minutes for day is from 1322 to 1439 so sleeping time accuracy could be the cases.
-And I want to see how looks those records, that don't have daily sleep records.
+The average daily minutes range from 1322 to 1439, indicating potential inaccuracies in sleep time recording.
+Next, I want to examine the records that do not include daily sleep data.
 ``` r
 comb_data_no_sleep <- comb_daily_data[comb_daily_data$TotalSleepRecords == 0,]
 count_1440_minutes_no_sleep <- sum(comb_data_no_sleep$TotalMinutes == 1440)
@@ -118,7 +119,7 @@ print(count_1440_minutes_no_sleep)
 ggplot(data=comb_data_no_sleep, aes(x=TotalMinutes, y=SedentaryMinutes)) + geom_point()
 ```
 ![ggplot_2](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/c16fb60d-aeee-4d30-9906-0daeebdd8426)
-For daily activities analysis I will use only data that includes sleeping data. And add colums with active time and laying in bed time.
+For the analysis of daily activities, I will exclusively utilize data that includes sleep records. Additionally, I will add columns for active time and time spent in bed.
 ``` r
 daily_analysis_data <- comb_daily_data %>%
   filter(TotalSleepRecords > 0)
@@ -127,14 +128,14 @@ daily_analysis_data <- mutate(daily_analysis_data, SomeActivity = VeryActiveMinu
 
 daily_analysis_data <- mutate(daily_analysis_data, LayingMinutes = TotalTimeInBed - TotalMinutesAsleep)
 ```
-More active minutes more steps.
+Increased active minutes result in more steps.
 ``` r
 ggplot(data=daily_analysis_data, aes(x=TotalSteps, y=SomeActivity)) + geom_smooth(method = "loess") + 
   labs(title = "Comparison of Steps VS Activity Time", x = "Total Steps", y = "Activity Time")
 ```
 ![ggplot_3](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/13f6f9c3-daa1-4973-851b-bd36af1fc0de)
 
-I will look at summary data about how participiants spend they time.
+I  will examine summary data on how participants spend their time.
 ``` r
 sums_act <- colSums(daily_analysis_data[, c("VeryActiveMinutes", "FairlyActiveMinutes", "LightlyActiveMinutes", "SedentaryMinutes", "TotalMinutesAsleep", "LayingMinutes")])
 
@@ -151,7 +152,7 @@ sum_daily_activites <- data.frame(
   AvgTime = as.numeric(avg_act)
 )
 ```
-Most of the time is spent as sedentary minutes.
+Most of the time is spent sedentary.
 ``` r
 ggplot(data=sum_daily_activites, aes(x=Activity, y=AvgTime))+
   geom_bar(stat="identity")+
@@ -160,7 +161,7 @@ ggplot(data=sum_daily_activites, aes(x=Activity, y=AvgTime))+
 ```
 ![ggplot_4](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/6ae2814e-5023-4ab9-a1a9-a9e5da88b5af)
 
-And Explore activities by weekdays.
+Explore activities categorized by weekdays
 ``` r
 ggplot(avg_by_weekday_long, aes(x = Weekday, y = Minutes, fill = ActivityType)) +
   geom_bar(stat = "identity") +
@@ -172,7 +173,7 @@ ggplot(avg_by_weekday_long, aes(x = Weekday, y = Minutes, fill = ActivityType)) 
 ```
 ![ggplot_5](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/5aae9e75-b08f-455e-aacc-42dc3e81ed8b)
 
-Data was prepared for eseier visualization making in Tableau and exported as csv.
+The data was prepared for easier visualization in Tableau and exported as a CSV file.
 
 ## Data Visualization (Share)
 [Back to top](#author-zane-urbane)
