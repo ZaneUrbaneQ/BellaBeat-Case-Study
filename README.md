@@ -2,13 +2,13 @@
 ##### Author: Zane Urbane
 ##### Date: June 22, 2024
 
-- ### [Case Scenario](#case-scenario)
-- ### [Business Task (Ask)](#business-task-ask)
-- ### [About the Data (Prepare)](#about-the-data-prepare)
-- ### [Data Preparation (Process)](#data-preparation-process)
-- ### [Data Exploration (Analyze)](#data-exploration-analyze)
-- ### [Data Visualization (Share)](#data-visualization-share)
-- ### [Conclusions and Recommendations (Act)](#conclusions-and-recommendations-act)
+-  [Case Scenario](#case-scenario)
+-  [Business Task (Ask)](#business-task-ask)
+-  [About the Data (Prepare)](#about-the-data-prepare)
+-  [Data Preparation (Process)](#data-preparation-process)
+-  [Data Exploration (Analyze)](#data-exploration-analyze)
+-  [Data Visualization (Share)](#data-visualization-share)
+-  [Conclusions and Recommendations (Act)](#conclusions-and-recommendations-act)
 
 ## Case scenario
 Bellabeat, founded in 2013 by Urška Sršen and Sando Mur, creates health-focused smart products for women. Their product line includes the Bellabeat app, Leaf wellness tracker, Time wellness watch, and Spring hydration bottle. Bellabeat combines artistic design with advanced technology to provide insights into activity, sleep, stress, and reproductive health.
