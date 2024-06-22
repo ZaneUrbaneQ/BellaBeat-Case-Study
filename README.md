@@ -32,6 +32,8 @@
 ## Data Visualization
 
 ### [Bellabeat Data Analysis Dashboard](https://public.tableau.com/app/profile/zane.urbane/viz/BellabeatCaseStudy_17190633010800/Bellabeat)
+[Bellabeat](https://github.com/ZaneUrbaneQ/BellaBeat-Case-Study/assets/173494641/a444dc0c-a99e-436d-a42e-77f0110d9b6a)
+
 
 ## Data Preparation
 
