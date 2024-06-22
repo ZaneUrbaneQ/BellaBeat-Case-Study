@@ -16,9 +16,11 @@
 - <a href="#recommendations" id="toc-recommendations">Recommendations</a>
 
 ## Case scenario
+Bellabeat, founded in 2013 by Urška Sršen and Sando Mur, creates health-focused smart products for women. Their product line includes the Bellabeat app, Leaf wellness tracker, Time wellness watch, and Spring hydration bottle. Bellabeat combines artistic design with advanced technology to provide insights into activity, sleep, stress, and reproductive health.
 
 ### Business Task
-
+A clear statement of the business task is to analyze smart device usage data to gain insights into consumer behavior and inform Bellabeat's marketing strategy and product development decisions.
+Key stakeholders include Urška Sršen and Sando Mur, co-founders of Bellabeat, as well as the marketing analytics team responsible for analyzing and interpreting consumer data
 ### About the Data
 
 ### Limitations
