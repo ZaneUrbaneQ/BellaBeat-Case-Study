@@ -28,9 +28,13 @@ This Kaggle dataset comprises personal fitness tracker data from thirty Fitbit u
 
 ROCCC analysis and dataset limitations:
 Reliable: Low - The dataset includes only 30 participants, which is a small sample size and does not accurately represent the broader population of female Fitbit users. This small sample size introduces significant bias and reduces the reliability of any conclusions drawn from the data.
+
 Original: Low — The data being collected from Amazon Mechanical Turk indicates that it is sourced from a third party. 
+
 Comprehensive: Low — The dataset lacks key demographic information such as gender, age, and health conditions. 
+
 Current: Low — The data is approximately 8 years old, having been collected in 2016.
+
 Cited: Low — Data obtained from an unidentified third party (Amazon Mechanical Murk).
 
 ## Data preparation (Process)
