@@ -35,7 +35,18 @@
 
 ## Conclusions and Recommendations
 
-Smart device usage data analysis shows that:
--  most of the day users are sedentary,
--  onlu 
+Analysis of smart device usage data reveals the following insights:
+-  74.3% of awake time users spend in sedentary positions.
+-  Very active minutes average only 21-31 minutes daily.
+-  The average sleep duration is 7 hours per day.
+-  Activity patterns are consistent throughout the weekdays, with Saturday emerging as the most active day and Sunday showing the least activity.
+-  Peak steps occur between 17:00 to 19:00 and 12:00 to 14:00..
+
+Recommendations based on the data:
+- Devices should minimize manual entries to ensure data accuracy for personalized customer insights.
+- Implement reminders for movement, emphasizing precise exercises.
+- Include sleep reminders to approach the recommended 8 hours, synchronized with morning alarm times.
+- BellaBeat could introduce an educational program coupled with a point-based incentive system.
+- Enhance analysis accuracy by expanding participant data, duration, and detailed user information for precise segmentation.
+  
 **
