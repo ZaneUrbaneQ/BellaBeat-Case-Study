@@ -2,27 +2,22 @@
 ##### Author: Zane Urbane
 ##### Date: June 22, 2024
 
-- <a href="#background-information"
-  id="toc-background-information">Background Information</a>
-  - <a href="#business-task" id="toc-business-task">Business Task</a>
-  - <a href="#about-the-data" id="toc-about-the-data">About the Data</a>
-  - <a href="#limitations" id="toc-limitations">Limitations</a>
-- <a href="#data-preparation" id="toc-data-preparation">Data
-  Preparation</a>
-- <a href="#data-exploration" id="toc-data-exploration">Data
-  Exploration</a>
-- <a href="#data-visualization" id="toc-data-visualization">Data
-  Visualization</a>
-- <a href="#recommendations" id="toc-recommendations">Recommendations</a>
+- ### [Case Scenario](#case-scenario)
+- ### [Business Task (Ask)](#cusiness-task-ask)
+- ### [About the Data (Prepare)](#about-the-data-prepare)
+- ### [Data Preparation (Process)](#data-preparation-process)
+- ### [Data Exploration (Analyze)](#data-exploration-analyze)
+- ### [Data Visualization (Share)](#data-visualization-share)
+- ### [Conclusions and Recommendations (Act)](#conclusions-and-recommendations-act)
 
 ## Case scenario
 Bellabeat, founded in 2013 by Urška Sršen and Sando Mur, creates health-focused smart products for women. Their product line includes the Bellabeat app, Leaf wellness tracker, Time wellness watch, and Spring hydration bottle. Bellabeat combines artistic design with advanced technology to provide insights into activity, sleep, stress, and reproductive health.
 
-### Business Task (Ask)
+## Business Task (Ask)
 Bellabeat aims to analyze smart device usage data to understand how consumers use their products. This analysis will inform strategic marketing decisions aimed at enhancing user engagement, optimizing product offerings, and expanding market reach.
 Key stakeholders include Urška Sršen and Sando Mur, co-founders of Bellabeat, as well as the marketing analytics team responsible for analyzing and interpreting consumer data.
 
-### About the Data (Prepare)
+## About the Data (Prepare)
 Data Source: FitBit Fitness Tracker Data from Mobius: https://www.kaggle.com/arashnic/fitbit
 
 This Kaggle dataset comprises personal fitness tracker data from thirty Fitbit users. These participants consented to provide their personal tracker data, which includes minute-level output for physical activity, heart rate, and sleep monitoring. The dataset features information on daily activity, steps, and heart rate, allowing for an exploration of users' habits. It contains 18 CSV files organized in long format.
